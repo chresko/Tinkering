@@ -100,6 +100,37 @@ void matrixspiral(int* array, int height, int width) {
 	
 }
 
+void bestTrade(int*, int);
+void bestTrade(int* array, int n) {
+	// current maxValue;
+	int maxValue = 0;
+	// current minValue;
+	int minValue = 0;
+	// current maxDifference (between maxValue and minValue)
+	int maxDifference = 0;
+	
+	// we can walk backwards to make sure our min and max values don't cross
+	for (int i = n - 1; i >= 0; --i) {
+		// find our current max value
+		if(maxValue < array[i]) {
+			maxValue = array[i];
+		}
+		
+		// find our local difference
+		int difference = maxValue - array[i];
+		// is this a global difference?
+		if(maxDifference < difference) {
+			maxDifference = difference;
+			// so this must be our current min value
+			minValue = array[i];
+		}
+	}
+		
+	printf("Buy at: %d\n", minValue);
+	printf("Sell at: %d\n", maxValue);
+	printf("Price gain: %d\n", maxDifference);
+}
+
 int main(int argc, char *argv[]) {
 	printf("%d\n", reverseInt(123456));
 	
