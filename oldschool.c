@@ -23,8 +23,8 @@ int fibi(int n) {
 		int p2 = 1;
 		for (int i = 2; i < n; ++i) {
 			r = p1 + p2;
-			p2 = p1;
-			p1 = r;
+			p1 = p2;
+			p2 = r;
 		}
 	}
 	
@@ -170,14 +170,50 @@ bool isPowerOf2(unsigned int n) {
 	return !(n & n-1);
 }
 
+//0 1 1 2 3 5
+unsigned int fibo(unsigned int f) {
+	unsigned int r = 0;
+	if (f == 0) {
+		return 0;
+	} else if (f == 1 || f == 2) {
+		return 1;
+	} else {
+		r = fibo(f-1) + fibo(f-2);
+	}
+	
+	return r;
+}
+
+//0 1 1 2 3 5 8
+unsigned int fiboi(unsigned int f) {
+	if (f == 0) {
+		return 0;
+	} else if (f == 1 || f == 2) {
+		return 1;
+	} else {
+		unsigned int f1 = 1;
+		unsigned int f2 = 2;
+		unsigned int r = 0;
+		for (int i = 3; i <= f; ++i) {
+			r = f1 + f2;
+			f1 = f2;
+			f2 = r;
+		}
+		
+		return r;
+	}
+}
+
 
 typedef int int64[2];
 
 int main() {
-	//int r = fibr(26);
+	//int r = fibr(16);
 	//printf("%d\n", r);
-	//int r = fibi(76);
+	//r = fibi(16);
 	//printf("%d\n", r);
+	unsigned int r = fiboi(5);
+	printf("%d\n", r);
 	//for (int i = 0; i < 1076; ++i) {
 		//insert(i);
 	//}
@@ -209,7 +245,7 @@ int main() {
 	
 	int64* ptr = NULL;
 	++ptr;
-	printf("%d", ptr);
+	//printf("%d", ptr);
 	
 	int64 a;
 	a[0] = 12345;

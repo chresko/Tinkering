@@ -41,7 +41,7 @@
 
 -(void) dealloc {
 	self.hatColor = nil;
-	[super dealloc];
+	//[super dealloc];
 }
 
 @end
@@ -76,9 +76,9 @@
 		
 		for (int i = 0; i < numberOfPrisoners; ++i) {
 			if (arc4random() % 2 == 0) {
-				[array insertObject:[[[Prisoner alloc] initWithColor:BLACK] autorelease] atIndex:i];
+				[array insertObject:[[Prisoner alloc] initWithColor:BLACK] atIndex:i];
 			} else {
-				[array insertObject:[[[Prisoner alloc] initWithColor:WHITE] autorelease] atIndex:i];
+				[array insertObject:[[Prisoner alloc] initWithColor:WHITE] atIndex:i];
 			}
 		}
 		
@@ -117,7 +117,7 @@
 	for (int i = 1; i < numberOfPrisoners; ++i) {
 		p = [array objectAtIndex:i];
 		count = blackHatsRevealed + p.blackHatCount; // number of black hats not including me
-		if (isEven && count % 2 != 0 || !isEven && count % 2 == 0) { // if even and odd in front of me or odd and even in front of me
+		if ((isEven && count % 2 != 0) || (!isEven && count % 2 == 0)) { // if even and odd in front of me or odd and even in front of me
 			blackHatsRevealed++;
 			[self helperPrint:PROMPTBLACK prisonerNumber:i withPrisoner:p andColor:BLACK];
 		} else {
@@ -127,20 +127,20 @@
 }
 
 -(void) dealloc {
-	[array release];
-	[super dealloc];
+	//[array release];
+	//[super dealloc];
 }
 
 @end
 
 int main(int argc, char *argv[]) {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
 	PrisonerGame* game = [[PrisonerGame alloc] initWithNumberOfPrisoners:101];
 	[game start];
-	[game release];
+	//[game release];
 
-	[pool release];
+	//[pool release];
 	
 	return 0;
 }

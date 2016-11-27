@@ -15,6 +15,19 @@ unsigned int reverseInt(unsigned int n) {
 	return retVal;
 }
 
+// alternative solution
+unsigned int reverseIntI(unsigned int);
+unsigned int reverseIntI(unsigned int n) {
+	unsigned int result = n % 10;
+	while (n / 10 > 0) {
+		n /= 10;
+		result *= 10;
+		result += n % 10;
+	}
+	
+	return result;
+}
+
 bool mystrcmp(char*, char*);
 bool mystrcmp(char* str1, char* str2) {
 	while (*str1++ == *str2++ && *str1);
@@ -132,7 +145,7 @@ void bestTrade(int* array, int n) {
 }
 
 int main(int argc, char *argv[]) {
-	printf("%d\n", reverseInt(123456));
+	printf("%d\n", reverseIntI(123456));
 	
 	char* str1 = "Christian";
 	char* str2 = "Christian";
@@ -148,5 +161,6 @@ int main(int argc, char *argv[]) {
 	// 456
 	// 789
 	int array[] = {1,2,3, 5,6,7, 9,10,11};
-	matrixspiral(array, 3, 3);
+	//matrixspiral(array, 3, 3);
+	printf("%d\n", reverseIntI(2));
 }
